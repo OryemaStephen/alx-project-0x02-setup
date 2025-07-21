@@ -7,7 +7,7 @@ const Header: React.FC = () => {
       <nav>
         <ul className="flex space-x-4">
           <li>
-            <Link href="/">
+            <Link href="/home">
               <span className="hover:text-blue-600 cursor-pointer">Home</span>
             </Link>
           </li>

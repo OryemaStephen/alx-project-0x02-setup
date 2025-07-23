@@ -24,7 +24,7 @@ const Posts: React.FC<PostPageProps> = ({posts}) => {
   );
 };
 
-export const getStaticProps = async() => {
+export async function getStaticProps(){
   let posts: PostProps[]=[]
       try {
         const response = await fetch(

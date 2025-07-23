@@ -1,5 +1,6 @@
 import Card from "@/components/common/Card";
 import PostModal from "@/components/common/PostModal";
+import Header from "@/components/layout/Header";
 import { CardProps } from "@/interfaces";
 import React, { useState } from "react";
 
@@ -28,7 +29,8 @@ const Home: React.FC = () => {
 
   return (
     <div className="w-full min-h-[80vh]">
-      <div className="mb-4 flex justify-end gap-5">
+      <Header />
+      <div className="my-4 flex justify-end gap-5">
         <button
           type="button"
           className="bg-black text-white px-4 py-2 rounded-md hover:bg-black/60"

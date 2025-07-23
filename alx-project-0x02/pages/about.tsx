@@ -1,10 +1,12 @@
 import Button from "@/components/common/Button";
+import Header from "@/components/layout/Header";
 import React from "react";
 
 const About: React.FC = () => {
   return (
-    <div className="w-full h-screen flex-col flex items-center justify-center">
-      <h1>About Page</h1>
+    <div className="w-full min-h-[80vh]">
+      <Header />
+      <h1 className="my-4">About Page</h1>
       <div className="my-5 gap-4">
         <Button size="small" shape="rounded-sm">
           <span>Small Button</span>

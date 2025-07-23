@@ -14,3 +14,10 @@ export interface ButtonProps {
   children: React.ReactNode;
   className?: string;
 }
+
+export interface PostProps {
+  userId: number;
+  title: string;
+  content: string;
+}
+

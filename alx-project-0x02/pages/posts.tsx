@@ -1,39 +1,11 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import PostCard from "@/components/common/PostCard";
 import Header from "@/components/layout/Header";
-import { PostProps } from "@/interfaces";
-import React, { useEffect, useState } from "react";
+import { PostPageProps, PostProps } from "@/interfaces";
 
-const Posts: React.FC = () => {
-  const [posts, setPosts] = useState<PostProps[]>([]);
+const Posts: React.FC<PostPageProps> = ({posts}) => {
 
-  useEffect(() => {
-    const FetchPosts = async () => {
-      try {
-        const response = await fetch(
-          "https://jsonplaceholder.typicode.com/posts"
-        );
-
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-
-        const data = await response.json();
-
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        const formattedPosts: PostProps[] = data.map((post: any) => ({
-          title: post.title,
-          content: post.body,
-          userId: post.userId,
-        }));
-
-        setPosts(formattedPosts);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
-    FetchPosts();
-  }, []);
+  
   return (
     <div className="w-full min-h-[80vh]">
       <Header />
@@ -51,5 +23,36 @@ const Posts: React.FC = () => {
     </div>
   );
 };
+
+export const getStaticProps = async() => {
+  let posts: PostProps[]=[]
+      try {
+        const response = await fetch(
+          "https://jsonplaceholder.typicode.com/posts"
+        );
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const data = await response.json();
+
+        posts = data.map((post: any) => ({
+          title: post.title,
+          content: post.body,
+          userId: post.userId,
+        }));
+
+      } catch (error) {
+        console.log(error);
+      }
+
+      return {
+        props:{
+          posts
+        }
+      }
+    };
+
 
 export default Posts;

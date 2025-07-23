@@ -21,3 +21,7 @@ export interface PostProps {
   content: string;
 }
 
+export interface PostPageProps {
+  posts: PostProps[];
+}
+
